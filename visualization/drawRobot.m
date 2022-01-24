@@ -42,9 +42,12 @@ hd.base = patch('vertices', mesh.vert, 'faces', obj.body.mesh.face, 'facecolor',
                     opt_bdy.facecolor, 'facealpha', opt_bdy.facealpha, 'edgecolor',...
                     opt_bdy.edgecolor, 'edgealpha', opt_bdy.edgealpha, 'parent', group);
 set(hd.base, 'Tag', [obj.name '-base']);
+
 if (drawFrame)
     hd.baseframe = c2w.plot('color', frm.framecolor,'length',...
     0.4*min(obj.body.size(1:2)), 'thick', frm.framethick, 'style', frm.framestyle);
+    set(hd.baseframe,'parent',group);
+    set(hd.baseframe,'Tag', [obj.name '-frame']);
 
 end
 
@@ -78,7 +81,4 @@ for i=1:wheel_sz
     end
 end
 
-if (drawFrame)
-
-end
 end

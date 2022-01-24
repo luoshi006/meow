@@ -73,7 +73,10 @@ case 'diff'
         robot.wheels(i).pose.position = [0, sign(i-1.5)*w_base_half, whl_hgt];
         robot.wheels(i).pose.rpy      = [-pi/2, 0, 0];
         robot.wheels(i).size = wheelSize;
+        robot.wheels(i).radius = wheelRadius;
         robot.wheels(i).rotAngle = 0;
+        robot.wheels(i).steerAngle = 0;
+        robot.wheels(i).type = 'Standard';  % Steering
     end
 otherwise
     disp('unsupport robot type');

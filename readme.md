@@ -17,7 +17,7 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
 - Differential wheeled robot
 
 <p align="center">
-    <img width="200" src="doc/robot_diff.gif">
+    <img width="380" src="doc/demo_inv_kinetic.gif">
 </p>
 
 - robot on the road
