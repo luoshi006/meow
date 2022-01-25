@@ -18,9 +18,9 @@ v = [1,0,0];      % m/s
 w = [0,0,0];      % rad/s
 
 for i=1:1/dt
-    rbt2 = updateWheelInvKinetic(rbt2, v, w, dt);
+    rbt2 = updateWheelKinetic(rbt2, v, w, dt);
     figR = drawRobot(rbt2);
-%     makeGif(getframe(gcf), 'demo_inv_kinetic');
+    % makeGif(getframe(gcf), 'demo_kinetic');
     pause(dt);
     delete(figR.group);
 end
@@ -29,20 +29,32 @@ end
 v = [0 0 0];
 w = [0 0 1];
 for i=1:(pi/2)/dt
-    rbt2 = updateWheelInvKinetic(rbt2, v, w, dt);
+    rbt2 = updateWheelKinetic(rbt2, v, w, dt);
     figR = drawRobot(rbt2);
-%     makeGif(getframe(gcf), 'demo_inv_kinetic');
+    % makeGif(getframe(gcf), 'demo_kinetic');
     pause(dt);
     delete(figR.group);
 end
 
-% circle 
-v = [0 0 1];
+% circle
+v = [1 0 0];
 w = [0 0 1];
-for i=1:round(pi/2,1)/dt
-    rbt2 = updateWheelInvKinetic(rbt2, v, w, dt);
+for i=1:round(pi/2,2)/dt
+    rbt2 = updateWheelKinetic(rbt2, v, w, dt);
     figR = drawRobot(rbt2);
-%     makeGif(getframe(gcf), 'demo_inv_kinetic');
+    % makeGif(getframe(gcf), 'demo_kinetic');
+    pause(dt);
+    delete(figR.group);
+end
+
+% stright line backward
+v = [-1,0,0];      % m/s
+w = [ 0,0,0];      % rad/s
+
+for i=1:1/dt
+    rbt2 = updateWheelKinetic(rbt2, v, w, dt);
+    figR = drawRobot(rbt2);
+    % makeGif(getframe(gcf), 'demo_kinetic');
     pause(dt);
     delete(figR.group);
 end
