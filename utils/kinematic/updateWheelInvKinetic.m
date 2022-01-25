@@ -11,7 +11,7 @@ for i=1:length(obj.wheels)
     wv(:,i) = v + cross(w, r);
 
     % calc wheel RPM
-    spd = norm(wv(:,i));
+    spd = wv(1,i);
     omg = spd/obj.wheels(i).radius;
     obj.wheels(i).rotAngle = wrapToPi(obj.wheels(i).rotAngle + omg*dt);
     obj.wheels(i).steerAngle = atan2(wv(2,i), wv(1,i));
