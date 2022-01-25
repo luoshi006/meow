@@ -45,7 +45,7 @@ set(hd.base, 'Tag', [obj.name '-base']);
 
 if (drawFrame)
     hd.baseframe = c2w.plot('color', frm.framecolor,'length',...
-    0.4*min(obj.body.size(1:2)), 'thick', frm.framethick, 'style', frm.framestyle);
+    0.4*min(obj.body.size(1:2)), 'thick', frm.framethick, 'style', frm.framestyle, 'rviz', true);
     set(hd.baseframe,'parent',group);
     set(hd.baseframe,'Tag', [obj.name '-frame']);
 
@@ -75,7 +75,7 @@ for i=1:wheel_sz
 
     if (drawFrame)
         hd.whl(i).frame = whl2w(i).plot('color', frm.framecolor,'length',...
-                                        obj.wheels(i).size(1)/2, 'thick', frm.framethick, 'style', frm.framestyle);
+                                        obj.wheels(i).size(1)/2, 'thick', frm.framethick, 'style', frm.framestyle, 'rviz', true);
         set(hd.whl(i).frame,'parent',group);
         set(hd.whl(i).frame,'Tag', [obj.name '-whl' num2str(i) '-frame']);
     end

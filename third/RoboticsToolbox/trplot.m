@@ -1,6 +1,6 @@
 %TRPLOT Draw a coordinate frame
 %
-% TRPLOT(T, OPTIONS) draws a 3D coordinate frame represented by the homogeneous 
+% TRPLOT(T, OPTIONS) draws a 3D coordinate frame represented by the homogeneous
 % transform T (4x4).
 %
 % H = TRPLOT(T, OPTIONS) as above but returns a handle.
@@ -29,7 +29,7 @@
 % 'framelabel',F     The coordinate frame is named {F}, axes have no subscripts.
 % 'text_opts', opt   A cell array of MATLAB text properties
 % 'axhandle',A       Draw in the MATLAB axes specified by the axis handle A
-% 'view',V           Set plot view parameters V=[az el] angles, or 'auto' 
+% 'view',V           Set plot view parameters V=[az el] angles, or 'auto'
 %                    for view toward origin of coordinate frame
 % 'length',s         Length of the coordinate frame arms (default 1)
 % 'arrow'            Use arrows rather than line segments for the axes
@@ -37,7 +37,7 @@
 % 'thick',t          Thickness of lines (default 0.5)
 % 'perspective'      Display the axes with perspective projection
 % '3d'               Plot in 3D using anaglyph graphics
-% 'anaglyph',A       Specify anaglyph colors for '3d' as 2 characters for 
+% 'anaglyph',A       Specify anaglyph colors for '3d' as 2 characters for
 %                    left and right (default colors 'rc'): chosen from
 %                    r)ed, g)reen, b)lue, c)yan, m)agenta.
 % 'dispar',D         Disparity for 3d display (default 0.1)
@@ -61,12 +61,12 @@
 %
 % Notes::
 % - Multiple frames can be added using the HOLD command
-% - The 'rviz' option is equivalent to 'rgb', 'notext', 'noarrow', 
+% - The 'rviz' option is equivalent to 'rgb', 'notext', 'noarrow',
 %   'thick', 5.
 % - The 'arrow' option requires arrow3 from FileExchange.
 
-% - The handle H is an hgtransform object. 
-% - When using the form TRPLOT(H, ...) to animate a frame it is best to set 
+% - The handle H is an hgtransform object.
+% - When using the form TRPLOT(H, ...) to animate a frame it is best to set
 %   the axis bounds.
 % - The '3d' option requires that the plot is viewed with anaglyph glasses.
 % - You cannot specify 'color' and '3d' at the same time.
@@ -80,17 +80,17 @@
 % Copyright (C) 1993-2017, by Peter I. Corke
 %
 % This file is part of The Robotics Toolbox for MATLAB (RTB).
-% 
+%
 % RTB is free software: you can redistribute it and/or modify
 % it under the terms of the GNU Lesser General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
 % (at your option) any later version.
-% 
+%
 % RTB is distributed in the hope that it will be useful,
 % but WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 % GNU Lesser General Public License for more details.
-% 
+%
 % You should have received a copy of the GNU Leser General Public License
 % along with RTB.  If not, see <http://www.gnu.org/licenses/>.
 %
@@ -105,7 +105,7 @@ function hout = trplot(T, varargin)
     if nargin == 0
         T = eye(3,3);
     end
-    
+
     if size(T,3) > 1
         error('RTB:trplot:badarg', 'trplot cannot operate on a sequence');
     end
@@ -114,7 +114,7 @@ function hout = trplot(T, varargin)
     elseif ~ishomog(T) && ~isrot(T)
         error('RTB:trplot:badarg', 'trplot operates only on transform (4x4) or rotation matrix (3x3)');
     end
-    
+
     opt.color = 'b';
     opt.textcolor = [];
     opt.rgb = false;
@@ -140,25 +140,25 @@ function hout = trplot(T, varargin)
     opt.handle = [];
     opt.perspective = false;
     opt.style = '-';
-    
+
     [opt,args] = tb_optparse(opt, varargin);
-    
+
     if opt.arrow && ~exist('arrow3')
         opt.arrow = false;
         warning('RTB:trplot:badarg', 'arrow option requires arrow3 from FileExchange');
     end
-        
+
     if isscalar(T) && ishandle(T)
         warning('RTB:trplot:deprecated', 'Use ''handle'' option');
         % trplot(H, T)
         opt.handle = T; T = args{1};
     end
-    
+
     % ensure it's SE(3)
     if isrot(T)
         T = r2t(T);
     end
-    
+
     if ~isempty(opt.handle)
         set(opt.handle, 'Matrix', T);
         % for the 3D case retrieve the right hgtransform and set it
@@ -173,7 +173,7 @@ function hout = trplot(T, varargin)
     end
 
     if opt.rviz
-        opt.thick = 5;
+        opt.thick = 2;
         opt.arrow = false;
         opt.rgb = true;
         opt.text = false;
@@ -188,27 +188,27 @@ function hout = trplot(T, varargin)
     if isempty(opt.text_opts)
         opt.text_opts = {};
     end
-    
+
     if opt.d_3d
         opt.color = ag_color(opt.anaglyph(1));
     end
-    
+
     % figure the dimensions of the axes, if not given
     if isempty(opt.axis)
         % determine some default axis dimensions
-        
+
         % get the origin of the frame
         if isrot(T)
             c = [0 0 0];  % at zero for a rotation matrix
         else
-            c = transl(T);    
+            c = transl(T);
         end
-        
+
         d = 1.2;
         opt.axis = [c(1)-d c(1)+d c(2)-d c(2)+d c(3)-d c(3)+d];
-        
+
     end
-        
+
     if ~isempty(opt.axhandle)
         hax = opt.axhandle;
         hold(hax);
@@ -221,7 +221,7 @@ function hout = trplot(T, varargin)
                 axis(opt.axis);
             end
             daspect([1 1 1]);
-            
+
             if opt.axes
                 xlabel( 'X');
                 ylabel( 'Y');
@@ -258,9 +258,9 @@ function hout = trplot(T, varargin)
     else
         z1 = opt.length*[0 0 1]';
     end
-    
+
     % draw the axes
-    
+
     mstart = [o o o]';
     mend = [x1 y1 z1]';
 
@@ -269,7 +269,7 @@ function hout = trplot(T, varargin)
     else
         axcolors = { opt.color, opt.color, opt.color};
     end
-    
+
     if opt.arrow
 %         % draw the 3 arrows
 %         S = [opt.color num2str(opt.width)];
@@ -289,26 +289,26 @@ function hout = trplot(T, varargin)
                 'Parent', hg);
         end
     end
-    
+
     % label the axes
     if isempty(opt.frame)
         fmt = '%c';
     else
         fmt = sprintf('%%c_{%s}', opt.frame);
     end
-    
+
     if opt.text
         % add the labels to each axis
         h = text(x1(1), x1(2), x1(3), sprintf(fmt, opt.labels(1)), 'Parent', hg);
         set(h, opt.text_opts{:});
-        
+
         h = text(y1(1), y1(2), y1(3), sprintf(fmt, opt.labels(2)), 'Parent', hg);
         set(h, opt.text_opts{:});
-        
+
         h = text(z1(1), z1(2), z1(3), sprintf(fmt, opt.labels(3)), 'Parent', hg);
         set(h, opt.text_opts{:});
     end
-    
+
     if ~isempty(opt.framelabel)
         opt.frame = opt.framelabel;
     end
@@ -325,7 +325,7 @@ function hout = trplot(T, varargin)
         set(h, 'Position', e(1:2));
 
     end
-    
+
     if ~opt.axes
         set(gca, 'visible', 'off');
     end
@@ -339,42 +339,42 @@ function hout = trplot(T, varargin)
         grid on
         hold off
     end
-    
+
     % now place the frame in the desired pose
     set(hg, 'Matrix', T);
 
-    
+
     if opt.d_3d
-        % 3D display.  The original axes are for the left eye, and we add 
+        % 3D display.  The original axes are for the left eye, and we add
         % another set of axes to the figure for the right eye view and
         % displace its camera to the right of that of that for the left eye.
         % Then we recursively call trplot() to create the right eye view.
-        
+
         left = gca;
         right = axes;
-        
+
         % compute the offset in world coordinates
         off = -t2r(view(left))'*[opt.dispar 0 0]';
         pos = get(left, 'CameraPosition');
-        
+
         set(right, 'CameraPosition', pos+off');
         set(right, 'CameraViewAngle', get(left, 'CameraViewAngle'));
         set(right, 'CameraUpVector', get(left, 'CameraUpVector'));
         target = get(left, 'CameraTarget');
         set(right, 'CameraTarget', target+off');
-        
+
         % set perspective projections
         set(left, 'Projection', 'perspective');
         set(right, 'Projection', 'perspective');
-        
+
         % turn off axes for right view
         set(right, 'Visible', 'Off');
-        
+
         % set color for right view
         hg2 = trplot(T, 'color', ag_color(opt.anaglyph(2)));
-        
+
         % the hgtransform for the right view is user data for the left
-        % view hgtransform, we need to change both when we rotate the 
+        % view hgtransform, we need to change both when we rotate the
         % frame.
         set(hg, 'UserData', hg2);
     end

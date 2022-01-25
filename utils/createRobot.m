@@ -69,6 +69,7 @@ case 'diff'
     wheelSize = [2*(wheelRadius+wheelVisEps), 2*(wheelRadius+wheelVisEps), wheelWidth+wheelVisEps];
     for i=1:2
         robot.wheels(i).mesh = createCylinder(wheelSize, wheelColor);
+        robot.wheels(i).mesh.color.facealpha = 0.2;
         whl_hgt = wheelRadius + wheelVisEps - hgt;
         robot.wheels(i).pose.position = [0, sign(i-1.5)*w_base_half, whl_hgt];
         robot.wheels(i).pose.rpy      = [-pi/2, 0, 0];
