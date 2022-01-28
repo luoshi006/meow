@@ -17,7 +17,28 @@ $$\xi_i = \frac{1}{k-1}(t_{i+1}+t_{i+2}+...+t_{i+k-1})$$
 
 `demo_spline.m`
 
+```m
+k = 4;  % degree = 3
+n = 6;  % control points size 7
+m = 10; % knots vector size 11
 
+knots = [0 0 0 0 0.25 0.5 0.75 1 1 1 1];    % clamped uniform
+```
+
+- basis function size: $m+1-k$
+<p align="center">
+    <img width="380" src="img/bspline_basis.png">
+</p>
+
+- at each point, the sum of basis functions is equal to 1
+<p align="center">
+    <img width="380" src="img/bspline_basis_weight.png">
+</p>
+
+- Convex Hull: a span lies within the convex hull of the $k$ control points that affect it.
+<p align="center">
+    <img width="380" src="img/bspline_convex_hull.png">
+</p>
 
 ## Details
 
