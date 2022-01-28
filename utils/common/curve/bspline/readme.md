@@ -2,16 +2,25 @@
 MATLAB core provide the cubic splines functionality
 
 ## B-splines
-An `order` $k$ B-spline is formed by several pieces of polynomials of `degree`  $k-1$, with at most $C^{k-2}$ continuity at the breakpoints.
+An `order` `k` B-spline is formed by several pieces of polynomials of `degree`  `k-1`, with at most <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=C%5E%7Bk-2%7D"> continuity at the breakpoints.
 
-Given $n+1$ control points $\mathbf{p}_i$
+Given `n+1` control points <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cmathbf%7Bp%7D_i">
 
 A `knot` vector defines the set of non-descending breakpoints
-$$\mathbf{T}=(t_0,t_1,...,t_m)$$
-$$m=n+k$$
 
-`Nodes` $\xi_i$ are the averages of the knots
-$$\xi_i = \frac{1}{k-1}(t_{i+1}+t_{i+2}+...+t_{i+k-1})$$
+<p align="center">
+<img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cmathbf%7BT%7D%3D(t_0%2Ct_1%2C...%2Ct_m)">
+</p>
+
+<p align="center">
+<img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=m%3Dn%2Bk">
+</p>
+
+`Nodes` <img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cxi_i"> are the averages of the knots
+
+<p align="center">
+<img style="transform: translateY(0.1em); background: white;" src="https://render.githubusercontent.com/render/math?math=%5Cxi_i%20%3D%20%5Cfrac%7B1%7D%7Bk-1%7D(t_%7Bi%2B1%7D%2Bt_%7Bi%2B2%7D%2B...%2Bt_%7Bi%2Bk-1%7D)">
+</p>
 
 ### Code
 
@@ -25,7 +34,7 @@ m = 10; % knots vector size 11
 knots = [0 0 0 0 0.25 0.5 0.75 1 1 1 1];    % clamped uniform
 ```
 
-- basis function size: $m+1-k$
+- basis function size: `m+1-k`
 <p align="center">
     <img width="380" src="img/bspline_basis.png">
 </p>
@@ -35,7 +44,7 @@ knots = [0 0 0 0 0.25 0.5 0.75 1 1 1 1];    % clamped uniform
     <img width="380" src="img/bspline_basis_weight.png">
 </p>
 
-- Convex Hull: a span lies within the convex hull of the $k$ control points that affect it.
+- Convex Hull: a span lies within the convex hull of the `k` control points that affect it.
 <p align="center">
     <img width="380" src="img/bspline_convex_hull.png">
 </p>
