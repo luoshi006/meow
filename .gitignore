@@ -1,2 +1,5 @@
 # OSX / *nix default autosave extension
 *.m~
+
+# IDE
+.vscode/
