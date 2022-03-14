@@ -26,5 +26,12 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
     <img width="380" src="doc/robot_diff_demo.png">
 </p>
 
+- Quintic Bezier Blend
+
+<p align="center">
+    <img width="1200" src="doc/demo_path_blend_bezier.png">
+</p>
+
+
 ## Refs
 - https://github.com/star2dust/Robotics-Toolbox
