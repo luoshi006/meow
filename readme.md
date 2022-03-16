@@ -29,7 +29,10 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
 - Quintic Bezier Blend
 
 <p align="center">
-    <img width="1200" src="doc/demo_path_blend_bezier.png">
+    <img width="380" src="doc/demo_path_blend.gif">
+</p>
+<p align="center">
+    <img width="750" src="doc/demo_path_blend_bezier.png">
 </p>
 
 

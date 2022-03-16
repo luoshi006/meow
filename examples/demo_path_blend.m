@@ -16,6 +16,30 @@ path = waypointsFittingBezier(defaultWps, radius_tol);
 % sample traj
 traj = path2traj(path);
 
+%% animation
+rbt3 = createRobot('diff', 'cuboid', 'y');
+rbt3.name = 'rbt3';
+figure; hold on; view(3); axis equal; grid on
+set(gcf,'color','w');
+
+plot(traj.trajPts(1,:), traj.trajPts(2,:));
+plot(min(defaultWps(1,:))-1, min(defaultWps(2,:))-1);
+plot(max(defaultWps(1,:))+1, max(defaultWps(2,:))+1);
+
+for i=1:length(traj.vel)-1
+    v = [traj.vel(i),0,0];
+    w = [0,0,traj.vel(i) * traj.curvature(i)];
+    dt= traj.dt(i);
+    rbt3 = updateWheelKinetic(rbt3, v, w, dt);
+    if 0 == mod(i,20)
+        figR = drawRobot(rbt3);
+        plot3(rbt3.pose.position(1),rbt3.pose.position(2),rbt3.pose.position(3),'.b');
+%         makeGif(getframe(gcf), 'demo_path_blend');
+        pause(0.001);
+        delete(figR.group);
+    end
+end
+drawRobot(rbt3);
 
 %% plot
 figure; hold on; axis equal

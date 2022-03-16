@@ -31,19 +31,26 @@ function traj_out = trapezoidal(traj_in)
 
     % find min
     eps = 0.001;
-    for i=1:num
+    for i=1:num-1
+        s = norm(traj_in.trajPts(:,i)-traj_in.trajPts(:,i+1));
         if (abs(vel_f(i)-vel_b(i)) < eps)
             % equal
             traj_out.vel(i) = vel_f(i);
             traj_out.acc(i) = 0;
+            traj_out.dt(i)  = s/vel_f(i);
         elseif (vel_f(i) < vel_b(i))
             % acc
             traj_out.vel(i) = vel_f(i);
             traj_out.acc(i) = traj_in.acc_limit(i);
+            traj_out.dt(i)  = 2*s/(vel_f(i)+vel_f(i+1));
         else
             % dcc
             traj_out.vel(i) = vel_b(i);
             traj_out.acc(i) = -traj_in.acc_limit(i);
+            traj_out.dt(i)  = 2*s/(vel_b(i) + vel_b(i+1));
         end
     end
+    traj_out.vel(num) = vel_b(num);
+    traj_out.acc(num) = -traj_in.acc_limit(num);
+    traj_out.dt(num)  = 0;
 end

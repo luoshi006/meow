@@ -49,11 +49,15 @@ function traj = path2traj(path)
 
             tangent = zeros(2,num);
             kappa   = zeros(1,num);
-            for i=1:num
-                tangent(:,i) = sample_step*dpts(i,:)';
+            % sign    = zeros(1,num);
+            for j=1:num
+                tangent(:,j) = sample_step*dpts(j,:)';
                 % calc curvature
                 % k(u) = | f'(u) × f''(u) | / | f'(u) |^3
-                kappa(i) = norm(cross([dpts(i,:),0], [ddpts(i,:),0]))/(norm(dpts(i,:))^3);
+                % https://pomax.github.io/bezierinfo/#curvature
+                % kappa(j) = norm(cross([dpts(j,:),0], [ddpts(j,:),0]))/(norm(dpts(j,:))^3);
+                kappa(j) = (dpts(j,1)*ddpts(j,2)-ddpts(j,1)*dpts(j,2))/(dpts(j,1)^2+dpts(j,2)^2)^1.5;
+                % sign(j)  = (dpts(j,1)*ddpts(j,2)-ddpts(j,1)*dpts(j,2));
             end
 
             traj.trajPts   = [traj.trajPts'; pts]';

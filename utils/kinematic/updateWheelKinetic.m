@@ -36,7 +36,7 @@ icr_r_v = cross(v,w);
 % update position by screw motion theroy
 if norm(icr_r_v) < eps
     dcm = angle2dcm(obj.pose.rpy(1),obj.pose.rpy(2),obj.pose.rpy(3), 'xyz');
-    wds = dcm * bds';
+    wds = dcm' * bds';
 else
     icr_rn = norm(v)/norm(w);    %scalar
     icr_r = icr_r_v/norm(icr_r_v) * icr_rn;
