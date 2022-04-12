@@ -36,6 +36,9 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
 </p>
 
 - Motion Velocity Smoother
+
+autoware 代码中将论文中的 SOCP 问题简化为 QP 问题；虽然只考虑了 smooth 和 IoD，但合理整定参数也可以基本实现较好的光滑速度曲线。
+
 <p align="center">
     <img width="480" src="doc/demo_jerk_smooth.png">
 </p>
