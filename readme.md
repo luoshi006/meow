@@ -35,6 +35,11 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
     <img width="750" src="doc/demo_path_blend_bezier.png">
 </p>
 
+- Motion Velocity Smoother
+<p align="center">
+    <img width="480" src="doc/demo_jerk_smooth.png">
+</p>
+
 
 ## Refs
 - https://github.com/star2dust/Robotics-Toolbox
