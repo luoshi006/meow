@@ -1,9 +1,9 @@
-function traj = path2traj(path)
+function traj = path2traj(path, limit)
 
-    limit_fast_speed = 2;
-    limit_slow_speed = 0.5;
-    limit_fast_acc   = 2;
-    limit_slow_acc   = 0.3;
+    limit_fast_speed = limit.fast_speed;
+    limit_slow_speed = limit.slow_speed;
+    limit_fast_acc   = limit.fast_acc;
+    limit_slow_acc   = limit.slow_acc;
 
     traj.trajPts   = [];
     traj.curvature = [];

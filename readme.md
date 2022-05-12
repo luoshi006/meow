@@ -35,6 +35,13 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
     <img width="750" src="doc/demo_path_blend_bezier.png">
 </p>
 
+- Time optimal velocity planning using Linear Programming in the form of a second order B-Spline
+
+<p align="center">
+    <img width="750" src="doc/demo_LP_vel.png">
+</p>
+
+
 - Motion Velocity Smoother
 
 autoware 代码中将论文中的 SOCP 问题简化为 QP 问题；虽然只考虑了 smooth 和 IoD，但合理整定参数也可以基本实现较好的光滑速度曲线。
