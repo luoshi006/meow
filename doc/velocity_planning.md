@@ -6,7 +6,7 @@
 
 ### 1.1 Geometric Path
 
-path $r(s)$, geometric derivatives ($r', r'', r'''$) :
+path $r(s)$, geometric derivatives $(r', r'', r''')$ :
 
 $$
 \begin{align}
@@ -15,7 +15,6 @@ r(s) &= [x(s), y(s), z(s)]\\
  r''&=\frac{d^2 r(s)}{ds^2},\\
  r'''&=\frac{d^3 r(s)}{ds^3} \\
 s &\in [0, L]
-
 \end{align}
 $$
 
@@ -33,10 +32,10 @@ $$
 
 ### 1.2 KeyPoints for Path
 
-For velocity planning, the path must be continuous to the second geometric derivative ($C^2$) in order for jerk to be bounded.
+For velocity planning, the path must be continuous to the second geometric derivative $(C^2)$ in order for jerk to be bounded.
 
 - Cubic Spline
-    - Difference between **chord displacement** ($du$) and **arc length displacement** ($ds$) cause by non-zero curvature;
+    - Difference between **chord displacement** $(du)$ and **arc length displacement** $(ds)$ cause by non-zero curvature;
     - cubic spline is parameterized by chord displacement;
     - velocity is associated to arc length displacement;
 
@@ -53,7 +52,7 @@ $$
 
 ### 1.3 Derivative
 
-Using the chain rule,&emsp; **Primes** ($r'$) denote a derivative with respect to the arc parameter $s$, &emsp; **overhead dots** ($\dot{s}$) denote a derivative with respect to time $t$;
+Using the chain rule,&emsp; **Primes** $(r')$ denote a derivative with respect to the arc parameter $s$, &emsp; **overhead dots** $(\dot{s})$ denote a derivative with respect to time $t$;
 
 $$
 \begin{align}
@@ -156,7 +155,7 @@ $q^*$ denote an approximate upper bound for the $q$ profile, and keep under the 
 
 $$
 \begin{align}
-    \max &\sum q^* \\
+    \max &\sum^{}_{} q^* \\
     s.t. & \\
     & |v_{max}| \geq |r'| \sqrt{q^*} \\
     & |a_{max}| \geq |r'' q^* + \frac{1}{2}r' q'^*| \\
@@ -175,7 +174,7 @@ $$
 
 $$
 \begin{align}
-    \max &\sum q_i \\
+    \max &\sum^{}_{} q_i \\
     s.t. & \\
     & |v_{max}| \geq |r'| \sqrt{q} \\
     & |a_{max}| \geq |r'' q + \frac{1}{2}r' q'| \\
