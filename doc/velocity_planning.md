@@ -155,15 +155,15 @@ $q^*$ denote an approximate upper bound for the $q$ profile, and keep under the 
 
 $$
 \begin{align}
-    \max &\sum^{k}_{1} q^* \\
+    \max &\sum^{k}_{1} q^{*} \\
     s.t. & \\
-    & |v_{max}| \geq |r'| \sqrt{q^*} \\
-    & |a_{max}| \geq |r'' q^* + \frac{1}{2}r' q'^*| \\
-    & |j_{max}| \geq |r'''q^*| \sqrt{q^*} \\
+    & |v_{max}| \geq |r'| \sqrt{q^{*}} \\
+    & |a_{max}| \geq |r'' q^{*} + \frac{1}{2}r' q'^{*}| \\
+    & |j_{max}| \geq |r'''q^{*}| \sqrt{q^{*}} \\
     & s \in [0, L] \\
     optional\ constraints:& \\
-    & q_{process\_limit} \geq q^* \\
-    & q_{BC} = q^* \\
+    & q_{process\_limit} \geq q^{*} \\
+    & q_{BC} = q^{*} \\
 \end{align}
 $$
 
@@ -178,8 +178,8 @@ $$
     s.t. & \\
     & |v_{max}| \geq |r'| \sqrt{q} \\
     & |a_{max}| \geq |r'' q + \frac{1}{2}r' q'| \\
-    & |j_{max}| \geq |r'''q + \frac{3}{2}r'' q' + \frac{1}{2}r'q''| \sqrt{q^*} \\
-    & q^* \geq q \\
+    & |j_{max}| \geq |r'''q + \frac{3}{2}r'' q' + \frac{1}{2}r'q''| \sqrt{q^{*}} \\
+    & q^{*} \geq q \\
     & s \in [0, L] \\
     optional\ constraints:& \\
     & q_{process\_limit} \geq q \\
