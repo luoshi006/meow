@@ -14,6 +14,8 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
 ```
 
 ## Demo
+
+### Robot Base
 - [Differential wheeled robot](examples/demo_Kinematic.m)
 
 <p align="center">
@@ -26,6 +28,8 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
     <img width="380" src="doc/robot_diff_demo.png">
 </p>
 
+### Path
+
 - [Quintic Bezier Blend](examples/demo_path_blend.m)
 
 <p align="center">
@@ -34,6 +38,10 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
 <p align="center">
     <img width="750" src="doc/demo_path_blend_bezier.png">
 </p>
+
+### Trajectory
+
+#### Velocity Planning  - [paper](doc/velocity_planning.md)
 
 - [Time optimal velocity planning using Linear Programming in the form of a second order B-Spline](examples/demo_LP_vel.m)
 
@@ -47,6 +55,17 @@ A Matlab Simulation Repo, now focus on robot visualization and Navigation planni
     <img width="750" src="doc/demo_LP_vel2.png">
 </p>
 
+- [Linear Programming with Heurist Window](examples/demo_LP_vel_window.m)
+
+<p align="center">
+    <img width="750" src="doc/demo_LP_vel_win_vel.png">
+</p>
+<p align="center">
+    <img width="480" src="doc/demo_LP_vel_win_acc.png">
+</p>
+<p align="center">
+    <img width="480" src="doc/demo_LP_vel_win_jrk.png">
+</p>
 
 - [Motion Velocity Smoother](examples/demo_jerk_smooth.m)
 

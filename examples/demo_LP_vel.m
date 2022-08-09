@@ -106,7 +106,7 @@ Aeq = zeros(2*sample_N, ctrl_N);
     Aeq(sample_N+sample_N,:) = basis_acc(sample_N,:); % acc(end) = 0;
 beq = zeros(1, 2*sample_N);
 lb  = zeros(1, ctrl_N);
-ub  = ones(1, ctrl_N)*limit.fast_speed^2;
+ub  = ones(1, ctrl_N)*(limit.fast_speed/L)^2;
 
 % LP
 options = optimoptions(@linprog,'Display','iter');
