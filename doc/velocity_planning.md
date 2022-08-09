@@ -155,7 +155,7 @@ $q^*$ denote an approximate upper bound for the $q$ profile, and keep under the 
 
 $$
 \begin{align}
-    \max &\sum^{k}_{1} q^{*} \\
+    \max &\sum^{k}_{i=1} q^{*} \\
     s.t. & \\
     & |v_{max}| \geq |r'| \sqrt{q^{*}} \\
     & |a_{max}| \geq |r'' q^{*} + \frac{1}{2}r' q'^{*}| \\
@@ -174,7 +174,7 @@ $$
 
 $$
 \begin{align}
-    \max &\sum^{k}_{1} q_i \\
+    \max &\sum^{k}_{i=1} q_i \\
     s.t. & \\
     & |v_{max}| \geq |r'| \sqrt{q} \\
     & |a_{max}| \geq |r'' q + \frac{1}{2}r' q'| \\
